@@ -1,0 +1,12 @@
+# ninja log v5
+325	354	1680886025048684414	Project_3_____Job_Screening	b671c02fe5d4f5ed
+1	325	1680886025017709590	CMakeFiles/Project_3_____Job_Screening.dir/hw3test.cpp.o	f74d6bf01c4891d8
+0	297	1680886024989517330	CMakeFiles/Project_3_____Job_Screening.dir/hw3.cpp.o	eb202c1793f118d9
+0	40	1680886069839045675	build.ninja	9b0c17dffd2fc191
+3	240	1680886070084482494	CMakeFiles/Project_3_____Job_Screening.dir/hw3.cpp.o	eb202c1793f118d9
+240	272	1680886070117184873	Project_3_____Job_Screening	b671c02fe5d4f5ed
+2	312	1680886973232464155	CMakeFiles/Project_3_____Job_Screening.dir/hw3.cpp.o	eb202c1793f118d9
+2	273	1680893217886512589	CMakeFiles/Project_3_____Job_Screening.dir/hw3.cpp.o	eb202c1793f118d9
+273	302	1680893217917730134	Project_3_____Job_Screening	b671c02fe5d4f5ed
+2	305	1680893265455910127	CMakeFiles/Project_3_____Job_Screening.dir/hw3test.cpp.o	f74d6bf01c4891d8
+305	337	1680893265489738015	Project_3_____Job_Screening	b671c02fe5d4f5ed
