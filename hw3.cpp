@@ -57,11 +57,12 @@ vector<int> recursiveBestApplicant(const vector<pair<float, float>>& app, int st
 }
 
 
+// BestApplicants function that calls the recursiveBestApplicant function
 vector<int> BestApplicants(const vector<pair<float, float>>& applicants) {
-    // Find the best applicant(s) from the entire list of applicants
-    auto S1 = recursiveBestApplicant(applicants, 0, applicants.size() - 1);
-    // Sort the indices of the best applicant(s) in ascending order
+    // Find the best applicants from the list of applicants
+    vector<int> S1 = recursiveBestApplicant(applicants, 0, applicants.size() - 1);
+    // Sort the indices in ascending order
     sort(S1.begin(), S1.end());
-    // Return the indices of the best applicant(s)
+    // Return the indices of best applicants
     return S1;
 }
