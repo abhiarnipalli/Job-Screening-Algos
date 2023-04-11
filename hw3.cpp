@@ -3,7 +3,6 @@
 //
 #include <vector>
 #include <algorithm>
-#include <float.h>
 using namespace std;
 
 vector<int> recursiveBestApplicant(const vector<pair<float, float>>& app, int start, int end) {
@@ -11,48 +10,47 @@ vector<int> recursiveBestApplicant(const vector<pair<float, float>>& app, int st
     if (start == end) {
         return {start};
     }
-    // Break your set of applicants into two groups, start by finding the middle
+    // Break the set of applicants into two groups, start by finding the middle
     int middle = start + (end - start) / 2;
     // Find the best applicants from left
-    auto left = recursiveBestApplicant(app, start, middle);
+    vector<int> bestLeft = recursiveBestApplicant(app, start, middle);
     // Find the best applicants from right
-    auto right = recursiveBestApplicant(app, (middle + 1), end);
+    vector<int> bestRight = recursiveBestApplicant(app, (middle + 1), end);
 
-    // Combine the results of the two groups to form the final solution
-    vector<int> bestApplicant; // Initialize the vector to store the index(es) of the best applicant(s)
+    // Combine the two sets of best applicants
+    vector<int> bestApplicant; // Vector to store the indexes of the best applicant(s)
     float bestWpm = 0.0;
-    float bestIpm = std::numeric_limits<float>::max(); // Initialize the variables to store the best WPM and IPM values
-    //float bestIpm = FLT_MAX;
+    float bestIpm = std::numeric_limits<float>::max();
     int i = 0;
     int j = 0;
-    while (i < left.size() || j < right.size()) {
-        if (i < left.size() && (j == right.size() || app[left[i]].first > app[right[j]].first)) {
+    while (i < bestLeft.size() || j < bestRight.size()) {
+        if (i < bestLeft.size() && (app[bestLeft[i]].first > app[bestRight[j]].first) || j == bestRight.size() ) {
             // The applicant in the left group is better in WPM than the one in the right group
-            if (app[left[i]].second < bestIpm) {
+            if (app[bestLeft[i]].second < bestIpm) {
                 // The applicant in the left group is also better in IPM
-                bestWpm = app[left[i]].first;
-                bestIpm = app[left[i]].second;
-                bestApplicant = {left[i]};
+                bestWpm = app[bestLeft[i]].first;
+                bestIpm = app[bestLeft[i]].second;
+                bestApplicant = {bestLeft[i]};
             }
-            else if (app[left[i]].second == bestIpm) {
+            else if (app[bestLeft[i]].second == bestIpm) {
                 // The applicant in the left group is equally good in IPM as the best candidate so far
-                bestApplicant.push_back(left[i]);
+                bestApplicant.push_back(bestLeft[i]);
             }
-            i++;
+            ++i;
         }
         else {
             // The applicant in the right group is better in WPM than the one in the left group
-            if (app[right[j]].second < bestIpm) {
+            if (app[bestRight[j]].second < bestIpm) {
                 // The applicant in the right group is also better in IPM
-                bestWpm = app[right[j]].first;
-                bestIpm = app[right[j]].second;
-                bestApplicant = {right[j]};
+                bestWpm = app[bestRight[j]].first;
+                bestIpm = app[bestRight[j]].second;
+                bestApplicant = {bestRight[j]};
             }
-            else if (app[right[j]].second == bestIpm) {
+            else if (app[bestRight[j]].second == bestIpm) {
                 // The applicant in the right group is equally good in IPM as the best candidate so far
-                bestApplicant.push_back(right[j]);
+                bestApplicant.push_back(bestRight[j]);
             }
-            j++;
+            ++j;
         }
     }
     return bestApplicant;

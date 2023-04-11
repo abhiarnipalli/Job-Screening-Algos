@@ -4,6 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <chrono>
+using namespace std::chrono;
 using namespace std;
 
 vector<int> BestApplicants(const vector<pair<float, float>>& applicants);
@@ -45,13 +47,24 @@ int main(int argc, char** argv){
     }
     cout << endl;
 
+
+    // start run time clock
+    auto start = high_resolution_clock::now();
+
     vector<int> sol2 = BestApplicants(applicants);
+
+    //stop run time clock
+    auto stop = high_resolution_clock::now();
 
     cout << "Recursive Solution: ";
     for (int i = 0; i < sol2.size(); i++) {
         cout << sol2[i] << " ";
     }
     cout << endl;
+
+    //output runtime
+    auto duration = duration_cast<microseconds>(stop - start);
+    cout << endl << "Runtime: " << duration.count() << " microseconds" << endl;
 
     return 0;
 }
