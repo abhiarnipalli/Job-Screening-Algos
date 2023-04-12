@@ -20,17 +20,22 @@ eligible candidates.
 The simplest way of solving this problem is a naïve double for loop:
 
 ````
-
-    S = φ
-    For each applicant x 
-      Eligible = true
-    For each applicant y that is not x
-    If (y is better than x)
-      Eligible = false
-      Break
-      If Eligible)
-        Add x to the set of solution S
-    Return S
+vector<int> naiveBestApplicants(const vector<pair<float, float>>& applicants){
+    vector<int> sol;
+    for (int i = 0; i < applicants.size(); i++){
+        bool eligible = true;
+        for (int j = 0; j < applicants.size(); j++){
+            if ((i != j) && (applicants[i].first < applicants[j].first) && (applicants[i].second > applicants[j].second)){
+                eligible = false;
+                break;
+            }
+        }
+        if (eligible) {
+            sol.push_back(i);
+        }
+    }
+    return sol;
+}
   ````
   
   
