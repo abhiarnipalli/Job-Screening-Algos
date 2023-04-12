@@ -19,18 +19,19 @@ eligible candidates.
 
 The simplest way of solving this problem is a naïve double for loop:
 
+````
 
-S = φ
-For each applicant x
-  Eligible = true
-  Fir each applicant y that is not x
-  If (y is better than x)
-     Eligible = false
-     Break
-     If Eligible)
-      Add x to the set of solution S
-  Return S
-  
+    S = φ
+    For each applicant x 
+      Eligible = true
+    For each applicant y that is not x
+    If (y is better than x)
+      Eligible = false
+      Break
+      If Eligible)
+        Add x to the set of solution S
+    Return S
+  ````
   
   
 
