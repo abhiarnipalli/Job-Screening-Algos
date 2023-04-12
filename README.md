@@ -1,4 +1,4 @@
-# Project-3-----Job-Screening
+# Project-3---Job-Screening
 
 You are the head of the HR department of your company. Your company wants to hire a new CTO (Chief
 Talking Officer), and you are tasked with screening off initial applicants. You have decided to using two
