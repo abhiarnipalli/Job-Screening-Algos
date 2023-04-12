@@ -40,22 +40,17 @@ int main(int argc, char** argv){
         applicants.push_back(make_pair(p, q));
     }
     vector<int> sol = naiveBestApplicants(applicants);
-
     cout << "Naive Solution: ";
     for (int i = 0; i < sol.size(); i++) {
         cout << sol[i] << " ";
     }
     cout << endl;
 
-
     // start run time clock
     auto start = high_resolution_clock::now();
-
     vector<int> sol2 = BestApplicants(applicants);
-
     //stop run time clock
     auto stop = high_resolution_clock::now();
-
     cout << "Recursive Solution: ";
     for (int i = 0; i < sol2.size(); i++) {
         cout << sol2[i] << " ";
