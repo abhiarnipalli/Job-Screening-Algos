@@ -36,15 +36,14 @@ be duplicate value in the output vector.
 
 You should write a second function, recursiveBestApplicant() that is the actual recursive algorithm.
 The recursive algorithm:
+
 The basic idea of the recursive algorithm is like this:
-• Break your set of applicants into two groups
-• Recursively find the best applicants of each group (as if that group is the only applicants)
-• Combine the results of the two sets to form the final solution.
-For example, if you have six applicants (app[0] ... app[5]), what you may do is the following
-• Divide the applicants into two groups (app[0], app[1], app[2]), (app[3], app[4], app[5]))
-• In the group of (app[0], app[1], app[2]) find all applicants that are eligible (as if those 3 are the
-only applicants)
-• Similar for the group (app[3], app[4], app[5])
-• Look at the eligible candidate returns, and from them select the applicants that are eligible
-candidates (as if all 6 of them are applicants)
+- Break your set of applicants into two groups
+- Recursively find the best applicants of each group (as if that group is the only applicants)
+- Combine the results of the two sets to form the final solution.
+- For example, if you have six applicants (app[0] ... app[5]), what you may do is the following
+- Divide the applicants into two groups (app[0], app[1], app[2]), (app[3], app[4], app[5]))
+- In the group of (app[0], app[1], app[2]) find all applicants that are eligible (as if those 3 are the only applicants)
+- Similar for the group (app[3], app[4], app[5])
+- Look at the eligible candidate returns, and from them select the applicants that are eligible candidates (as if all 6 of them are applicants)
 
