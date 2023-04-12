@@ -10,31 +10,66 @@ vector<int> recursiveBestApplicant(const vector<pair<float, float>>& app, int st
     if (start == end) {
         return {start};
     }
-    // Break the set of applicants into two groups, start by finding the middle
-    int middle = (start + (end - start) / 2);
-    // Find the best applicants from left and right side
-    vector<int> left = recursiveBestApplicant(app, start, middle);
-    vector<int> right = recursiveBestApplicant(app, (middle + 1), end);
+    // Divide the set of applicants into two groups
+    int mid = (start + end) / 2;
+    vector<int> leftApplicants = recursiveBestApplicant(app, start, mid);
+    vector<int> rightApplicants = recursiveBestApplicant(app, mid+1, end);
 
     // Combine the two sets of best applicants
     vector<int> sol;
-    for (int i = 0, j = 0; i < left.size() || j < right.size();) {
-        if (i < left.size() && (j == right.size() || app[left[i]].second > app[right[j]].second)) {
-            const float& leftFirst = app[left[i]].first;
-            const float& leftSecond = app[left[i]].second;
-            if (j == right.size() || leftFirst >= app[right[j]].first) {
-                sol.push_back(left[i]);
+    int i = 0;
+    int j = 0;
+    while (i < leftApplicants.size() && j < rightApplicants.size()) {
+        int bestLeft = leftApplicants[i], bestRight = rightApplicants[j];
+        if (app[bestLeft].first >= app[bestRight].first) {
+            if (app[bestLeft].second >= app[bestRight].second) {
+                sol.push_back(bestLeft);
+                i++;
             }
-            ++i;
+            else {
+                j++;
+            }
         }
         else {
-            const float& rightFirst = app[right[j]].first;
-            const float& rightSecond = app[right[j]].second;
-            if (i == left.size() || rightFirst >= app[left[i]].first) {
-                sol.push_back(right[j]);
+            if (app[bestRight].second >= app[bestLeft].second) {
+                sol.push_back(bestRight);
+                j++;
             }
-            ++j;
+            else {
+                i++;
+            }
         }
+    }
+    while (i < leftApplicants.size()) {
+        int bestLeft = leftApplicants[i];
+        bool eligible = true;
+        for (int k = j; k < rightApplicants.size(); k++) {
+            if (app[bestLeft].first < app[rightApplicants[k]].first &&
+                app[bestLeft].second > app[rightApplicants[k]].second) {
+                eligible = false;
+                break;
+            }
+        }
+        if (eligible) {
+            sol.push_back(bestLeft);
+        }
+        i++;
+    }
+
+    while (j < rightApplicants.size()) {
+        int bestRight = rightApplicants[j];
+        bool eligible = true;
+        for (int k = i; k < leftApplicants.size(); k++) {
+            if (app[bestRight].first < app[leftApplicants[k]].first &&
+                app[bestRight].second > app[leftApplicants[k]].second) {
+                eligible = false;
+                break;
+            }
+        }
+        if (eligible) {
+            sol.push_back(bestRight);
+        }
+        j++;
     }
     return sol;
 }
