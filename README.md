@@ -43,7 +43,7 @@ be duplicate value in the output vector.
 You should write a second function, recursiveBestApplicant() that is the actual recursive algorithm.
 The recursive algorithm:
 
-#The basic idea of the recursive algorithm is like this:
+# The basic idea of the recursive algorithm is like this:
 - Break your set of applicants into two groups
 - Recursively find the best applicants of each group (as if that group is the only applicants)
 - Combine the results of the two sets to form the final solution.
