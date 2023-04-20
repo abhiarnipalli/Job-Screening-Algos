@@ -51,7 +51,8 @@ int main(int argc, char** argv){
     vector<int> sol2 = BestApplicants(applicants);
     //stop run time clock
     auto stop = high_resolution_clock::now();
-    cout << "Recursive Solution: ";
+
+    cout << "Recursive Solution:" ;
     for (int i = 0; i < sol2.size(); i++) {
         cout << sol2[i] << " ";
     }
