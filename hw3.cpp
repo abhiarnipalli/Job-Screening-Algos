@@ -5,7 +5,6 @@
 #include <algorithm>
 using namespace std;
 
-// I WUV MY BABY MARYN
 
 vector<int> recursiveBestApplicant(const vector<pair<float, float>>& app, int start, int end){
     if (start == end) {
